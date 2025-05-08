@@ -20,14 +20,22 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('landingPage');
+
+// Items
 Route::get('/master-items', [App\Http\Controllers\MasterItemsController::class, 'index']);
 Route::get('/master-items/search', [App\Http\Controllers\MasterItemsController::class, 'search']);
 Route::get('/master-items/form/{method}/{id?}', [App\Http\Controllers\MasterItemsController::class, 'formView']);
 Route::post('/master-items/form/{method}/{id?}', [App\Http\Controllers\MasterItemsController::class, 'formSubmit']);
-
 Route::get('/master-items/view/{kode}', [App\Http\Controllers\MasterItemsController::class, 'singleView']);
 Route::get('/master-items/delete/{id}', [App\Http\Controllers\MasterItemsController::class, 'delete']);
-
-
 Route::get('/master-items/update-random-data', [App\Http\Controllers\MasterItemsController::class, 'updateRandomData']);
+
+// Categories
+Route::get('/master-categories', [App\Http\Controllers\MasterCategoriesController::class, 'index']);
+Route::get('/master-categories/search', [App\Http\Controllers\MasterCategoriesController::class, 'search']);
+Route::get('/master-categories/form/{method}/{id?}', [App\Http\Controllers\MasterCategoriesController::class, 'formView']);
+Route::post('/master-categories/form/{method}/{id?}', [App\Http\Controllers\MasterCategoriesController::class, 'formSubmit']);
+Route::get('/master-categories/view/{kode}', [App\Http\Controllers\MasterCategoriesController::class, 'singleView']);
+Route::get('/master-categories/delete/{id}', [App\Http\Controllers\MasterCategoriesController::class, 'delete']);
+Route::get('/master-categories/update-random-data', [App\Http\Controllers\MasterCategoriesController::class, 'updateRandomData']);
